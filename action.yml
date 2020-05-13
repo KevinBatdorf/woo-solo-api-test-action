@@ -1,0 +1,32 @@
+name: 'WordPress wp-browser testing action'
+description: 'Runs wp-browser tests in a separate container'
+inputs:
+  wp-db-name: 
+    description: 'Name of the WordPress database'
+    required: true
+    default: 'wordpresstest'
+  wp-db-user: 
+    description: 'Name of the database user'
+    required: true
+    default: 'admin'
+  wp-db-pass: 
+    description: 'Name of the database password'
+    required: true
+    default: 'password'
+  wp-user: 
+    description: 'Name of the WordPress user'
+    required: true
+    default: 'admin'
+  wp-pass: 
+    description: 'Name of the WordPress password'
+    required: true
+    default: 'password'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.wp-db-name }}
+    - ${{ inputs.wp-db-user }}
+    - ${{ inputs.wp-db-pass }}
+    - ${{ inputs.wp-user }}
+    - ${{ inputs.wp-pass }}
