@@ -1,5 +1,8 @@
 FROM wordpress:5.4.1-php7.2
 
+RUN pecl install pcov \
+  && docker-php-ext-enable pcov
+
 RUN curl -sS https://getcomposer.org/installer | php \
   && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer
 
