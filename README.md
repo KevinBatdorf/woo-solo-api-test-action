@@ -26,7 +26,7 @@ Github action for running wp-browser tests for your plugin
 
 ## Example usage
 
-uses: actions/plugin-test-action@v1
+uses: dingo-d/plugin-test-action@v1
 with:
   wp-db-name: 'wordpress-test'
   wp-db-user: 'root'
