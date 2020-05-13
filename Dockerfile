@@ -10,4 +10,4 @@ RUN npm install -g npm
 
 COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
