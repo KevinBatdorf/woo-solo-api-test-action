@@ -1,5 +1,8 @@
 #!/bin/sh -l
 
+pwd
+ls -all
+
 # Setup Composer
 composer install --no-progress
 
