@@ -11,7 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
 
 # Install requirements for wp-cli support
 RUN apt-get update \
-  && apt-get install -y sudo less mysql-client \
+  && apt-get install -y sudo less mariadb-client \
   && rm -rf /var/lib/apt/lists/*
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
