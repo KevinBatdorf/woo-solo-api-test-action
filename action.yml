@@ -13,6 +13,10 @@ inputs:
     description: 'Name of the database password'
     required: true
     default: 'password'
+  wp-db-host:
+    description: 'Name of the database host'
+    required: true
+    default: 'mysql'
   wp-user:
     description: 'Name of the WordPress user'
     required: true
@@ -28,5 +32,6 @@ runs:
     - ${{ inputs.wp-db-name }}
     - ${{ inputs.wp-db-user }}
     - ${{ inputs.wp-db-pass }}
+    - ${{ inputs.wp-db-host }}
     - ${{ inputs.wp-user }}
     - ${{ inputs.wp-pass }}
