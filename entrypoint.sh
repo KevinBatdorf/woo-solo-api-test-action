@@ -2,8 +2,8 @@
 
 cd /usr/src/wordpress/
 
-wp config create --dbname=$1 --dbuser=$2 --dbpass=$3 --dbhost=$4
-wp plugin install woocommerce --activate
+wp config create --dbname=$1 --dbuser=$2 --dbpass=$3 --dbhost=$4 --allow-root
+wp plugin install woocommerce --activate --allow-root
 
 cd /github/workspace
 
