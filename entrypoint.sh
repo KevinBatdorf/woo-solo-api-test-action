@@ -1,7 +1,9 @@
 #!/bin/sh -l
 
-pwd
-ls -all
+ls -all /usr/src/wordpress/
+ls -all /usr/src/wordpress/wp-content/plugins
+ls -all /usr/src/wordpress/wp-content/themes
+cat /usr/src/wordpress/wp-config.php
 
 # Setup Composer
 composer install --no-progress

@@ -1,23 +1,23 @@
 name: 'WordPress wp-browser testing action'
 description: 'Runs wp-browser tests in a separate container'
 inputs:
-  wp-db-name: 
+  wp-db-name:
     description: 'Name of the WordPress database'
     required: true
     default: 'wordpresstest'
-  wp-db-user: 
+  wp-db-user:
     description: 'Name of the database user'
     required: true
     default: 'admin'
-  wp-db-pass: 
+  wp-db-pass:
     description: 'Name of the database password'
     required: true
     default: 'password'
-  wp-user: 
+  wp-user:
     description: 'Name of the WordPress user'
     required: true
     default: 'admin'
-  wp-pass: 
+  wp-pass:
     description: 'Name of the WordPress password'
     required: true
     default: 'password'
