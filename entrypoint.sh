@@ -20,7 +20,6 @@ cd /usr/src/wordpress/wp-content/plugins/woo-solo-api
 
 # Setup Composer
 composer install --no-progress
-composer update
 
 # Install npm packages
 npm install
