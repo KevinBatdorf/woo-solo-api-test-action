@@ -21,8 +21,8 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 RUN npm install -g npm
 
-WORKDIR /usr/src/wordpress
+COPY entrypoint.sh /entrypoint.sh
 
-COPY entrypoint.sh .
+WORKDIR /usr/src/wordpress
 
 ENTRYPOINT ["/entrypoint.sh"]
