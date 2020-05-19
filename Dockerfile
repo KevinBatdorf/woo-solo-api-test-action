@@ -25,4 +25,4 @@ WORKDIR /usr/src/wordpress
 
 COPY entrypoint.sh .
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
