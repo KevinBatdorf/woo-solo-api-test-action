@@ -23,7 +23,7 @@ npm install
 npm run build
 
 # Setup Composer
-composer install
+composer install --no-progress
 
 # Run integration tests
 composer test:integration
