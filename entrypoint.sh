@@ -18,21 +18,12 @@ cp -R /github/workspace /usr/src/wordpress/wp-content/plugins/woo-solo-api
 
 cd /usr/src/wordpress/wp-content/plugins/woo-solo-api
 
-# Setup Composer
-composer install --no-progress
-
 # Install npm packages
 npm install
 npm run build
 
-pwd
-ls -all
-cd src/Core && ls -all
-cd ..
-cd ..
-cd tests && ls -all
-cd Integration && ls -all
-cd ..
+# Setup Composer
+composer install --no-progress
 
 # Run integration tests
 composer test:integration
