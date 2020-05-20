@@ -25,5 +25,10 @@ composer install --no-progress
 npm install
 npm run build
 
+pwd
+ls -all
+cd tests && ls -all
+cd ..
+
 # Run integration tests
 composer test:integration
