@@ -27,7 +27,11 @@ npm run build
 
 pwd
 ls -all
+cd src/Core && ls -all
+cd ..
+cd ..
 cd tests && ls -all
+cd Integration && ls -all
 cd ..
 
 # Run integration tests
