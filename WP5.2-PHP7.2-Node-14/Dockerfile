@@ -1,4 +1,4 @@
-FROM wordpress:5.2.6-php7.2
+FROM wordpress:5.2-php7.2
 
 # pcov setup for code coverage generation
 RUN pecl install pcov \
