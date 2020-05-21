@@ -31,7 +31,7 @@ inputs:
     default: '7.4'
 runs:
   using: 'docker'
-  image: 'Dockerfile-${{ inputs.php }}'
+  image: 'Dockerfile-'${{ inputs.php }}
   args:
     - ${{ inputs.wp-db-name }}
     - ${{ inputs.wp-db-user }}
