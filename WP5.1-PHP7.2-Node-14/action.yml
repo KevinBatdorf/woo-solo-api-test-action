@@ -1,4 +1,4 @@
-name: 'WordPress wp-browser testing action on PHP 7.3 and Node 14'
+name: 'WordPress wp-browser testing action for WP 5.1'
 description: 'Runs wp-browser tests in a separate container'
 inputs:
   wp-db-name:

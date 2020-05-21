@@ -1,4 +1,4 @@
-name: 'WordPress wp-browser testing action'
+name: 'WordPress wp-browser testing action for WP 5.4'
 description: 'Runs wp-browser tests in a separate container'
 inputs:
   wp-db-name:
