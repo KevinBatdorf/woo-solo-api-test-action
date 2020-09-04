@@ -1,0 +1,16 @@
+name: "CI"
+
+on: ["push", "pull_request"]
+
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v2"
+
+      - name: "Build Docker image WP5.1-PHP7.3-Node-14"
+        uses: "docker/build-push-action@v1"
+        with:
+          path: "WP5.1-PHP7.3-Node-14"
+          push: false
