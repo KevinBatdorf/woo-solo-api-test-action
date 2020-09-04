@@ -1,0 +1,19 @@
+name: "CI"
+
+on: ["push", "pull_request"]
+
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        wordpress-version: ["WP5.1-PHP7.3-Node-14", "WP5.2-PHP7.3-Node-14", "WP5.3-PHP7.3-Node-14", "WP5.4-PHP7.3-Node-14"]
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v2"
+
+      - name: "Build Docker image ${{ matrix.wordpress-version }}"
+        uses: "docker/build-push-action@v1"
+        with:
+          path: "${{ matrix.wordpress-version }}"
+          push: false
