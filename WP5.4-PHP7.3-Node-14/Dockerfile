@@ -1,30 +1,41 @@
-FROM wordpress:5.4.1-php7.3
+FROM wordpress:5.4.1-php7.3-apache
 
-# pcov setup for code coverage generation
-RUN pecl install pcov \
-  && docker-php-ext-enable pcov
+# Node.js from NodeSource
+RUN set -ex \
+    && curl -sL https://deb.nodesource.com/setup_14.x | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1 bash -
 
-# Composer setup
-RUN curl -sS https://getcomposer.org/installer | php \
-  && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer
-
-# Node setup
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-  && apt-get install -yq nodejs build-essential
-
-# Install npm
-RUN npm install -g npm
-
-# Install requirements for wp-cli support
-RUN apt-get update \
-  && apt-get install -y sudo less mariadb-client \
+# Install OS packages
+RUN set -ex \
+  && apt-get install -y nodejs build-essential \
+      sudo less mariadb-client \
   && rm -rf /var/lib/apt/lists/*
 
-# Install wp-cli
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-  && php wp-cli.phar --info \
-  && chmod +x wp-cli.phar \
-  && mv wp-cli.phar /usr/local/bin/wp
+# Upgrade npm
+RUN set -ex \
+  && npm install -g npm@latest \
+  && npm version
+
+# Install pcov PHP extension for fast code coverage generation
+RUN set -ex \
+  && yes "" | pecl install pcov \
+  && docker-php-ext-enable pcov \
+  && php --ri pcov
+
+# Composer setup
+RUN set -ex \
+  && EXPECTED_SIGNATURE="$(curl -sL https://composer.github.io/installer.sig)" \
+  && php -r 'copy("https://getcomposer.org/installer", "composer-setup.php");' \
+  && ACTUAL_SIGNATURE="$(php -r 'echo hash_file("sha384", "composer-setup.php");')" \
+  && test "$EXPECTED_SIGNATURE" = "$ACTUAL_SIGNATURE" \
+  && php composer-setup.php --install-dir /usr/local/bin --filename composer \
+  && rm composer-setup.php \
+  && composer --version
+
+# Install WP-CLI
+RUN set -ex \
+  && curl -sO https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+  && install --verbose --mode=0755 --no-target-directory wp-cli.phar /usr/local/bin/wp \
+  && wp --info
 
 COPY entrypoint.sh /entrypoint.sh
 
