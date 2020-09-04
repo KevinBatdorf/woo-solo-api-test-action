@@ -14,3 +14,21 @@ jobs:
         with:
           path: "WP5.1-PHP7.3-Node-14"
           push: false
+
+      - name: "Build Docker image WP5.2-PHP7.3-Node-14"
+        uses: "docker/build-push-action@v1"
+        with:
+          path: "WP5.2-PHP7.3-Node-14"
+          push: false
+
+      - name: "Build Docker image WP5.3-PHP7.3-Node-14"
+        uses: "docker/build-push-action@v1"
+        with:
+          path: "WP5.3-PHP7.3-Node-14"
+          push: false
+
+      - name: "Build Docker image WP5.4-PHP7.3-Node-14"
+        uses: "docker/build-push-action@v1"
+        with:
+          path: "WP5.4-PHP7.3-Node-14"
+          push: false
